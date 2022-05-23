@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="signup-img">
+    <img src="../../../assets/signup.png" alt="" />
+  </div>
+  <div class="signup-form">
+    <div class="card-container">
+      <h2>Crea tu cuenta</h2>
+
+      <!-- Submit form -->
+      <form [formGroup]="signupForm">
+        <!-- nombre -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nombre de usuario</mat-label>
+          <input matInput type="text" formControlName="username" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error>El nombre es obligatorio</mat-error>
+        </mat-form-field>
+
+        <!-- email -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput type="email" />
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" />
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <!-- Password Confirm -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Confirma tu contraseña</mat-label>
+          <input matInput type="password" />
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <!-- Go to signup -->
+        <a routerLink="/auth/login" class="link"
+          >¿Ya tienes una cuenta? Clic aquí para iniciar sesión</a
+        >
+
+        <!-- Submit form -->
+        <button mat-raised-button color="primary" class="my-3">
+          Crear cuenta
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

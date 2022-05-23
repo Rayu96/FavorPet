@@ -1,0 +1,27 @@
+img {
+  width: 80%;
+}
+
+.container {
+  .login-img {
+    animation: img-anim 0.8s ease;
+  }
+
+  .login-form {
+    animation: form-anim 0.8s ease;
+  }
+}
+
+@keyframes form-anim {
+  0% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+}
+
+@keyframes img-anim {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+}
