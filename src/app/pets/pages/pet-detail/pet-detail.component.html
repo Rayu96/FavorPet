@@ -1,0 +1,35 @@
+<div class="container pet-detail" *ngIf="pet">
+  <div class="pet-img">
+    <div class="img">
+      <img [src]="pet.photoUrl" [alt]="pet.name" />
+    </div>
+  </div>
+  <div class="pet-info">
+    <div class="header">
+      <h2>{{ pet.name }}</h2>
+      <p>{{ pet.description }}</p>
+    </div>
+
+    <div class="info">
+      <div>
+        <img src="../../../../assets/icons/age.png" alt="" />
+        <span>{{ pet.age }} {{ pet.age | i18nPlural: ageMap }}</span>
+      </div>
+
+      <div>
+        <img [src]="pet.kind | petImg" alt="" />
+        <span>{{ pet.kind | petKind }}</span>
+      </div>
+
+      <div>
+        <img src="../../../../assets/icons/location.png" alt="" />
+        <span>{{ pet.location }}</span>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button mat-stroked-button color="primary">Contactar con el dueño</button>
+      <button mat-raised-button color="primary">¡Quiero adoptarlo!</button>
+    </div>
+  </div>
+</div>

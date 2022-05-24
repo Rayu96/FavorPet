@@ -4,22 +4,24 @@
   </div>
   <div class="login-form">
     <div class="card-container">
-      <h2>Crea tu cuenta</h2>
+      <h2>Inicia sesión</h2>
 
       <!-- Submit form -->
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <!-- email -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Correo electrónico</mat-label>
-          <input matInput type="email" />
+          <input matInput type="email" formControlName="email" />
           <mat-icon matSuffix>mail</mat-icon>
+          <mat-error>{{ emailErrorMsg }}</mat-error>
         </mat-form-field>
 
         <!-- Password -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password" />
           <mat-icon matSuffix>lock</mat-icon>
+          <mat-error>{{ passwordErrorMsg }}</mat-error>
         </mat-form-field>
 
         <!-- Go to signup -->
@@ -28,7 +30,7 @@
         >
 
         <!-- Submit form -->
-        <button mat-raised-button color="primary" class="my-3">
+        <button mat-raised-button color="primary" class="my-3" type="submit">
           Crear cuenta
         </button>
       </form>

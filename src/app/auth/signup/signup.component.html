@@ -7,7 +7,7 @@
       <h2>Crea tu cuenta</h2>
 
       <!-- Submit form -->
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" (ngSubmit)="submitForm()">
         <!-- nombre -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Nombre de usuario</mat-label>
@@ -19,22 +19,25 @@
         <!-- email -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Correo electrónico</mat-label>
-          <input matInput type="email" />
+          <input matInput type="email" formControlName="email" />
+          <mat-error>{{ emailErrorMsg }}</mat-error>
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
         <!-- Password -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password" />
+          <mat-error>{{ passwordErrorMsg }}</mat-error>
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
         <!-- Password Confirm -->
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Confirma tu contraseña</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password2" />
           <mat-icon matSuffix>lock</mat-icon>
+          <mat-error>Las contraseñas no coinciden</mat-error>
         </mat-form-field>
 
         <!-- Go to signup -->
@@ -43,7 +46,7 @@
         >
 
         <!-- Submit form -->
-        <button mat-raised-button color="primary" class="my-3">
+        <button mat-raised-button color="primary" class="my-3" type="submit">
           Crear cuenta
         </button>
       </form>

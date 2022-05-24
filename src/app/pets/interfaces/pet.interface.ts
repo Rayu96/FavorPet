@@ -1,10 +1,10 @@
 export interface Pet {
-  id: string;
+  id?: string;
   ownerId: string;
   name: string;
   description: string;
+  kind: string;
   age: number;
   location: string;
   photoUrl: string;
-  kind: string;
 }

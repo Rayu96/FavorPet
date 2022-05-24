@@ -1,0 +1,32 @@
+<div class="toolbar">
+  <div class="toolbar-container">
+    <div>
+      <a mat-stroked-button color="primary" routerLink="/pets/add">
+        ¡Quiero dar una mascota en adopción!
+      </a>
+    </div>
+
+    <div class="filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Ordenar por:</mat-label>
+        <mat-select>
+          <mat-option value="option1">Más recientes</mat-option>
+          <mat-option value="option2">Más antigüos</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Filtrar por tipo</mat-label>
+        <mat-select>
+          <mat-option value="option1">Todos</mat-option>
+          <mat-option value="option1">Perros</mat-option>
+          <mat-option value="option2">Gatos</mat-option>
+          <mat-option value="option3">Aves</mat-option>
+          <mat-option value="option3">Otros</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+</div>
