@@ -11,17 +11,17 @@
     </div>
 
     <div class="info">
-      <div>
+      <div matTooltip="Edad de la mascota">
         <img src="../../../../assets/icons/age.png" alt="" />
         <span>{{ pet.age }} {{ pet.age | i18nPlural: ageMap }}</span>
       </div>
 
-      <div>
+      <div matTooltip="Tipo de animal">
         <img [src]="pet.kind | petImg" alt="" />
         <span>{{ pet.kind | petKind }}</span>
       </div>
 
-      <div>
+      <div matTooltip="Ubicación">
         <img src="../../../../assets/icons/location.png" alt="" />
         <span>{{ pet.location }}</span>
       </div>
@@ -29,7 +29,7 @@
 
     <div class="buttons">
       <button mat-stroked-button color="primary">Contactar con el dueño</button>
-      <button mat-raised-button color="primary">¡Quiero adoptarlo!</button>
+      <button mat-flat-button color="primary">¡Quiero adoptarlo!</button>
     </div>
   </div>
 </div>

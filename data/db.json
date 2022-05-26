@@ -39,6 +39,46 @@
       "location": "Madrid",
       "photoUrl": "https://images.unsplash.com/photo-1552053831-71594a27632d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1924",
       "kind": "dog"
+    },
+    {
+      "id": 5,
+      "ownerId": 1,
+      "name": "My pet 1",
+      "description": "This is my little dog, Im searching a home for him.",
+      "age": 2,
+      "location": "Madrid",
+      "photoUrl": "https://images.unsplash.com/photo-1532202802379-df93d543bac3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "kind": "dog"
+    },
+    {
+      "id": 6,
+      "ownerId": 2,
+      "name": "My cat",
+      "description": "This is my little cat",
+      "age": 1,
+      "location": "Alcobendas",
+      "photoUrl": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
+      "kind": "cat"
+    },
+    {
+      "id": 7,
+      "ownerID": 1,
+      "name": "My cow",
+      "description": "This is my cow",
+      "age": 1,
+      "location": "Barcelona",
+      "photoUrl": "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=488&q=80",
+      "kind": "other"
+    },
+    {
+      "id": 8,
+      "ownerID": 3,
+      "name": "My perrito",
+      "description": "Busco un hogar para mi perrito",
+      "age": 3,
+      "location": "Madrid",
+      "photoUrl": "https://images.unsplash.com/photo-1552053831-71594a27632d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1924",
+      "kind": "dog"
     }
   ],
   "users": [

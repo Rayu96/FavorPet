@@ -7,8 +7,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -20,8 +22,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatRippleModule,
     MatSelectModule,
     MatToolbarModule,
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}

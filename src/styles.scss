@@ -26,8 +26,8 @@ body {
   gap: 24px;
   grid-template-columns: repeat(2, 1fr);
   width: 80%;
-  margin: 0px auto;
-  min-height: 90vh;
+  margin: 32px auto;
+  justify-content: center;
   align-items: center;
 
   img {
@@ -35,7 +35,7 @@ body {
   }
 }
 
-.card-container {
+.card {
   width: 100%;
   background-color: white;
   border-radius: 8px;
@@ -51,4 +51,15 @@ body {
   color: #aaa;
   text-align: center;
   margin-top: 8px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Media queries */
+@media (max-width: 1000px) {
+  .container {
+    width: 90%;
+  }
 }

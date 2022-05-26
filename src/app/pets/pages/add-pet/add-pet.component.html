@@ -1,62 +1,81 @@
-<div class="card-container add">
-  <h2>¡Agrega tu mascota!</h2>
-
-  <!-- Submit form -->
-  <form [formGroup]="addPetForm" (ngSubmit)="submitForm()">
-    <!-- email -->
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Nombre</mat-label>
-      <input matInput type="email" formControlName="name" />
-      <mat-error>El nombre es obligatorio</mat-error>
-    </mat-form-field>
-
-    <!-- Description -->
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Descripción</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-      <mat-error>La descripción es obligatoria</mat-error>
-    </mat-form-field>
-
-    <div class="grid">
-      <!-- Kind -->
-      <div class="col-6">
-        <mat-form-field appearance="outline" class="w-full">
-          <mat-label>Tipo</mat-label>
-          <mat-select formControlName="kind">
-            <mat-option *ngFor="let kind of animalKind" [value]="kind">
-              {{ kind | titlecase }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<div class="add-container">
+  <div class="card">
+    <h2>¡Agrega tu mascota!</h2>
+    <div class="container">
+      <!-- Drag and Drop -->
+      <div class="img-container">
+        <div class="img-preview">
+          <img [src]="imageUrl" alt="" />
+        </div>
+        <div class="buttons">
+          <div class="upload">
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              (change)="showPreview($event)"
+            />
+            <label for="file"
+              ><mat-icon>file_upload</mat-icon>Escoge una fotografía
+            </label>
+          </div>
+        </div>
       </div>
 
-      <!-- Age -->
-      <div class="col-6">
-        <mat-form-field appearance="outline" class="w-full">
-          <mat-label>Edad</mat-label>
-          <input matInput type="number" formControlName="age" />
-          <mat-error>e</mat-error>
-        </mat-form-field>
+      <!-- Form -->
+      <div class="add">
+        <!-- Submit form -->
+        <form [formGroup]="addPetForm" (ngSubmit)="submitForm()">
+          <!-- email -->
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="email" formControlName="name" />
+            <mat-error>El nombre es obligatorio</mat-error>
+          </mat-form-field>
+
+          <!-- Description -->
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <mat-error>La descripción es obligatoria</mat-error>
+          </mat-form-field>
+
+          <div class="grid">
+            <!-- Kind -->
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="kind">
+                  <mat-option *ngFor="let kind of animalKind" [value]="kind">
+                    {{ kind | titlecase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Age -->
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Edad</mat-label>
+                <input matInput type="number" formControlName="age" />
+                <mat-error>e</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Ubicación</mat-label>
+            <input matInput type="text" formControlName="location" />
+            <mat-error>e</mat-error>
+          </mat-form-field>
+
+          <!-- Submit form -->
+          <button mat-flat-button color="primary" class="my-3" type="submit">
+            Aceptar
+          </button>
+        </form>
       </div>
     </div>
-
-    <!-- Location -->
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Ubicación</mat-label>
-      <input matInput type="text" formControlName="location" />
-      <mat-error>e</mat-error>
-    </mat-form-field>
-
-    <!-- ImageUrl -->
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Imagen</mat-label>
-      <input matInput type="text" formControlName="photoUrl" />
-      <mat-error>e</mat-error>
-    </mat-form-field>
-
-    <!-- Submit form -->
-    <button mat-raised-button color="primary" class="my-3" type="submit">
-      Aceptar
-    </button>
-  </form>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <button
     mat-icon-button
     class="example-icon"
@@ -10,10 +10,29 @@
   <span class="spacer"></span>
   <span class="example-spacer"></span>
 
-  <button mat-stroked-button color="accent" routerLink="/auth/login">
+  <button mat-stroked-button color="primary" routerLink="/auth/login">
     Iniciar Sesión
   </button>
-  <button mat-raised-button color="accent" routerLink="/auth/signup">
+  <button mat-flat-button color="primary" routerLink="/auth/signup">
     Crear una cuenta
   </button>
 </mat-toolbar>
+
+<!-- <mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span routerLink="/">My App</span>
+  <span class="example-spacer"></span>
+  <button class="btn btn-primary-outline" routerLink="/auth/login">
+    Iniciar Sesión
+  </button>
+  <button class="btn btn-primary" routerLink="/auth/signup">
+    Crear una cuenta
+  </button>
+</mat-toolbar>
+ -->

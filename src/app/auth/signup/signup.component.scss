@@ -1,4 +1,6 @@
 .container {
+  min-height: 80vh;
+
   .signup-img {
     animation: img-anim 0.8s ease;
   }
@@ -6,6 +8,10 @@
   .signup-form {
     animation: form-anim 0.8s ease;
   }
+}
+
+a {
+  margin-bottom: 16px;
 }
 
 @keyframes form-anim {

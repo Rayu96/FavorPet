@@ -1,4 +1,71 @@
-.add {
-  width: 600px;
-  margin: 32px auto;
+.add-container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 1000px;
+}
+
+.container {
+  .img-container,
+  .add {
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.img-preview {
+  width: 100%;
+  height: 400px;
+  background-color: dodgerblue;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.btn {
+  background-color: dodgerblue;
+  padding: 16px;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  border: none;
+  font-size: 16px;
+  margin: 16px 0px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label,
+.btn {
+  background-color: dodgerblue;
+  padding: 16px;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  border: none;
+  font-size: 16px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+label:hover {
+  background-color: rgb(23, 127, 232);
 }

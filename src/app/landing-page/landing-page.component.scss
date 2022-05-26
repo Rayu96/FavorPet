@@ -33,9 +33,10 @@
   }
 
   button {
-    animation: main-btn 1.5s ease forwards;
+    animation: main-btn 0.8s ease forwards;
     animation-delay: 0.4s;
     opacity: 0;
+    padding: 8px 32px;
   }
 }
 

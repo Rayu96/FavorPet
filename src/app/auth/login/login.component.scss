@@ -3,6 +3,8 @@ img {
 }
 
 .container {
+  min-height: 80vh;
+
   .login-img {
     animation: img-anim 0.8s ease;
   }
@@ -10,6 +12,10 @@ img {
   .login-form {
     animation: form-anim 0.8s ease;
   }
+}
+
+a {
+  margin-bottom: 24px;
 }
 
 @keyframes form-anim {
