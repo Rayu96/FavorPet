@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-pet.component.scss'],
 })
 export class AddPetComponent implements OnInit {
+  isImgSelected: boolean = false;
+
   animalKind: string[] = ['dog', 'cat', 'bird', 'other'];
 
   addPetForm: FormGroup = new FormGroup({
@@ -32,6 +34,7 @@ export class AddPetComponent implements OnInit {
   showPreview(e: any) {
     if (e.target.files) {
       this.fileUpload = e.target.files[0];
+      this.isImgSelected = true;
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = (e: any) => {

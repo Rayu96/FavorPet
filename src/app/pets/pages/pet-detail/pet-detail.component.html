@@ -1,9 +1,10 @@
 <div class="container pet-detail" *ngIf="pet">
+  <!-- Pet img -->
   <div class="pet-img">
-    <div class="img">
-      <img [src]="pet.photoUrl" [alt]="pet.name" />
-    </div>
+    <img [src]="pet.photoUrl" [alt]="pet.name" />
   </div>
+
+  <!-- Pet info -->
   <div class="pet-info">
     <div class="header">
       <h2>{{ pet.name }}</h2>
@@ -11,24 +12,30 @@
     </div>
 
     <div class="info">
-      <div matTooltip="Edad de la mascota">
+      <div>
         <img src="../../../../assets/icons/age.png" alt="" />
         <span>{{ pet.age }} {{ pet.age | i18nPlural: ageMap }}</span>
       </div>
 
-      <div matTooltip="Tipo de animal">
+      <div>
         <img [src]="pet.kind | petImg" alt="" />
         <span>{{ pet.kind | petKind }}</span>
       </div>
 
-      <div matTooltip="Ubicación">
+      <div>
         <img src="../../../../assets/icons/location.png" alt="" />
         <span>{{ pet.location }}</span>
       </div>
     </div>
 
     <div class="buttons">
-      <button mat-stroked-button color="primary">Contactar con el dueño</button>
+      <button
+        mat-stroked-button
+        color="primary"
+        [routerLink]="['/user', pet.ownerId]"
+      >
+        Contactar con el dueño
+      </button>
       <button mat-flat-button color="primary">¡Quiero adoptarlo!</button>
     </div>
   </div>

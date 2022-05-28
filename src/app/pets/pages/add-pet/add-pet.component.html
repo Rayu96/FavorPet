@@ -2,9 +2,15 @@
   <div class="card">
     <h2>¡Agrega tu mascota!</h2>
     <div class="container">
-      <!-- Drag and Drop -->
+      <!-- Image -->
       <div class="img-container">
         <div class="img-preview">
+          <!-- Icon if there is no image loaded -->
+          <div class="img-preview-icon" *ngIf="!isImgSelected">
+            <img src="../../../../assets/icons/add-photo.png" alt="" />
+          </div>
+
+          <!-- Image loaded  -->
           <img [src]="imageUrl" alt="" />
         </div>
         <div class="buttons">
