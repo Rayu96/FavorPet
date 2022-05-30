@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { ValidatorService } from '../services/validator.service';
 
 @Component({
@@ -41,13 +43,26 @@ export class LoginComponent implements OnInit {
     return '';
   }
 
-  constructor(private validatorService: ValidatorService) {}
+  constructor(
+    private validatorService: ValidatorService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   submitForm() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      const { email, password } = this.loginForm.value;
+      this.authService
+        .login({ email, password })
+        .then((res) => {
+          this.router.navigateByUrl('/pets');
+          //this.authService.userId.emit(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       console.log('Formulario inválido');
     }

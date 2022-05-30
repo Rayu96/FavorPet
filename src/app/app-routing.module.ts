@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserProfileComponent } from './user/pages/user-profile/user-profile.component';
 import { ErrorComponent } from './shared/pages/error/error.component';
+import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { UnauthorizedComponent } from './shared/pages/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,7 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    ...canActivate(() => redirectLoggedInTo('/pets')),
   },
   {
     path: 'pets',
@@ -20,6 +23,10 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: UserProfileComponent,
+  },
+  {
+    path: '403',
+    component: UnauthorizedComponent,
   },
   {
     path: '**',

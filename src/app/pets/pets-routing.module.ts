@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddPetComponent } from './pages/add-pet/add-pet.component';
 import { PetDetailComponent } from './pages/pet-detail/pet-detail.component';
 import { PetsComponent } from './pages/pets/pets.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddPetComponent,
+        ...canActivate(() => redirectUnauthorizedTo(['/403'])),
       },
       {
         path: ':id',

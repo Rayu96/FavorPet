@@ -10,6 +10,7 @@ import { PetsService } from '../../services/pets.service';
 })
 export class PetDetailComponent implements OnInit {
   pet!: Pet;
+  isLoading = true;
 
   ageMap = {
     '=1': 'año',
@@ -25,6 +26,7 @@ export class PetDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(({ id }) => {
       this.petsService.getPetById(id).subscribe((pet) => {
         this.pet = pet;
+        this.isLoading = false;
       });
     });
   }

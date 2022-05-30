@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import { ValidatorService } from '../services/validator.service';
+import { getAuth, onAuthStateChanged } from '@firebase/auth';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +13,12 @@ import { ValidatorService } from '../services/validator.service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  myauth = getAuth();
+
   signupForm: FormGroup = new FormGroup(
     {
-      username: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
+      lastname: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [
         Validators.required,
         Validators.pattern(this.validatorService.emailRegexValidation),
@@ -50,13 +58,39 @@ export class SignupComponent implements OnInit {
     return '';
   }
 
-  constructor(private validatorService: ValidatorService) {}
+  constructor(
+    private validatorService: ValidatorService,
+    private authService: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
   submitForm() {
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
+      // Authentication
+      const { name, lastname, email, password } = this.signupForm.value;
+
+      this.authService
+        .register({ email, password })
+        .then(() => {
+          // Add new user
+          onAuthStateChanged(this.myauth, (user) => {
+            if (user) {
+              const uid = user.uid;
+              const userAdded: User = { id: uid, name, lastname, email };
+              this.userService.addUser(userAdded);
+              this.authService.currentUserId.emit(true);
+            }
+          });
+
+          // Navigate to home page
+          this.router.navigateByUrl('/pets');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       console.log('Formulario inválido');
     }

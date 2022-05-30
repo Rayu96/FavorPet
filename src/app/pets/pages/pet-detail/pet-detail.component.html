@@ -1,4 +1,9 @@
-<div class="container pet-detail" *ngIf="pet">
+<!-- Spinner -->
+<div class="spinner" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container pet-detail" *ngIf="!isLoading">
   <!-- Pet img -->
   <div class="pet-img">
     <img [src]="pet.photoUrl" [alt]="pet.name" />

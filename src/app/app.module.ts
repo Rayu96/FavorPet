@@ -10,6 +10,11 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ErrorComponent } from './shared/pages/error/error.component';
 import { UserModule } from './user/user.module';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { UnauthorizedComponent } from './shared/pages/unauthorized/unauthorized.component';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,7 @@ import { UserModule } from './user/user.module';
     ToolbarComponent,
     LandingPageComponent,
     ErrorComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +31,9 @@ import { UserModule } from './user/user.module';
     MaterialModule,
     HttpClientModule,
     UserModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],

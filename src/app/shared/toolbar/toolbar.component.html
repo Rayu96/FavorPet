@@ -10,10 +10,25 @@
   <span class="spacer"></span>
   <span class="example-spacer"></span>
 
-  <button mat-stroked-button color="primary" routerLink="/auth/login">
+  <button mat-flat-button color="primary" (click)="signOut()" *ngIf="isLogin">
+    Cerrar sesión
+  </button>
+
+  <button
+    mat-stroked-button
+    color="primary"
+    routerLink="/auth/login"
+    *ngIf="!isLogin"
+  >
     Iniciar Sesión
   </button>
-  <button mat-flat-button color="primary" routerLink="/auth/signup">
+
+  <button
+    mat-flat-button
+    color="primary"
+    routerLink="/auth/signup"
+    *ngIf="!isLogin"
+  >
     Crear una cuenta
   </button>
 </mat-toolbar>

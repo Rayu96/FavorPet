@@ -1,0 +1,79 @@
+.error-container {
+  width: 500px;
+  height: 550px;
+  margin: 32px auto;
+  position: relative;
+
+  .error-bg {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 3;
+    animation: error-bg-anim 0.8s ease;
+  }
+
+  .error-cartel {
+    position: absolute;
+    z-index: 50;
+    top: 0%;
+    left: 140px;
+    width: 240px;
+    animation: error-cartel-anim 0.8s ease forwards,
+      anim-404 1s ease alternate-reverse infinite;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  .error-person {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    z-index: 100;
+    width: 120px;
+    animation: error-bg-person 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+}
+
+@keyframes anim-404 {
+  0% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes error-cartel-anim {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes error-bg-anim {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes error-bg-person {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
