@@ -1,0 +1,96 @@
+<div class="profile-container">
+  <mat-tab-group>
+    <mat-tab label="Mi Perfil">
+      <!-- My Profile -->
+      <div class="tab">
+        <div class="card profile-card" *ngIf="myProfile">
+          <div class="profile-card-header">
+            <!-- Profile card img -->
+            <div class="img">
+              <img
+                src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80"
+                alt=""
+              />
+            </div>
+
+            <!-- Profile card info -->
+            <div class="info">
+              <h2>{{ myProfile.name }} {{ myProfile.lastname }}</h2>
+              <div>
+                <p>Ubicación: {{ myProfile.location }}</p>
+                <p>Email: {{ myProfile.email }}</p>
+                <p>Teléfono: {{ myProfile.phone }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile info -->
+          <div class="profile-card-content">
+            <p>Descripción: {{ myProfile.aboutMe }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Mis Mascotas">
+      <!-- My Pets -->
+      <div class="tab">
+        <div class="pets-list" *ngIf="myPets">
+          <app-user-pet *ngFor="let pet of myPets" [pet]="pet"></app-user-pet>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Editar">
+      <!-- Edit Profile -->
+      <div class="tab">
+        <div class="card">
+          <form>
+            <div class="row-2">
+              <!-- Name -->
+              <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <!-- Lastname -->
+              <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input matInput />
+              </mat-form-field>
+            </div>
+
+            <div class="row-2">
+              <!-- Location -->
+              <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Ubicación</mat-label>
+                <input matInput />
+              </mat-form-field>
+
+              <!-- Phone -->
+              <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Teléfono</mat-label>
+                <input matInput />
+              </mat-form-field>
+            </div>
+
+            <!-- Email -->
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" />
+            </mat-form-field>
+
+            <!-- Descripción -->
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Descripción</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+
+            <!-- Submit -->
+            <button mat-flat-button color="primary">Aceptar</button>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

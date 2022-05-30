@@ -1,5 +1,19 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  getDownloadURL,
+  listAll,
+  ref,
+  Storage,
+  uploadBytes,
+  uploadBytesResumable,
+} from '@angular/fire/storage';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Auth } from '@angular/fire/auth';
+import { PetsService } from '../../services/pets.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-pet',
@@ -17,15 +31,61 @@ export class AddPetComponent implements OnInit {
     kind: new FormControl(null, [Validators.required]),
     age: new FormControl(null, [Validators.required]),
     location: new FormControl(null, [Validators.required]),
-    photoUrl: new FormControl(null, [Validators.required]),
   });
 
-  constructor() {}
+  constructor(
+    private storage: Storage,
+    private authService: AuthService,
+    public auth: Auth,
+    private petService: PetsService,
+    private snackbar: MatSnackBar,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  currentUserId?: string = '';
+
+  ngOnInit(): void {
+    this.currentUserId = this.auth.currentUser?.uid;
+    this.authService.usserLoggedIn.emit(true);
+  }
 
   submitForm() {
-    console.log(this.addPetForm.value);
+    if (this.addPetForm.invalid) {
+      /*       this.snackbar.open('Debes rellenar todos los campos', 'OK', {
+        duration: 2000,
+      }); */
+      Swal.fire({
+        icon: 'warning',
+        text: 'Debes rellenar todos los campos',
+      });
+    } else {
+      console.log('valido');
+      Swal.fire({
+        icon: 'question',
+        text: '¿Estás seguro que deseas publicarlo?',
+        showCancelButton: true,
+        confirmButtonText: 'Si, quiero publicarlo!',
+        cancelButtonText: 'Quizás más tarde',
+        reverseButtons: true,
+        confirmButtonColor: '#F2B84B',
+      }).then((res) => {
+        if (res.isConfirmed) {
+          Swal.fire({
+            title: '¡Tu mascota ha sido publicada!',
+            icon: 'success',
+            confirmButtonText: 'OK!',
+            confirmButtonColor: '#F2B84B',
+          }).then((res) => {
+            if (res.isConfirmed) {
+              //Upload pet
+              this.uploadPet();
+
+              this.router.navigateByUrl('/pets');
+            }
+          });
+        }
+      });
+    }
   }
 
   imageUrl: string = '';
@@ -43,7 +103,7 @@ export class AddPetComponent implements OnInit {
     }
   }
 
-  /*   uploadImage2() {
+  uploadPet() {
     const file = this.fileUpload;
     const imgRef = ref(this.storage, `images/${file.name}`);
     const uploadTask = uploadBytesResumable(imgRef, file);
@@ -57,9 +117,24 @@ export class AddPetComponent implements OnInit {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          //Uploading pet info
+          const pet = {
+            ...this.addPetForm.value,
+            photoUrl: url,
+            ownerId: this.currentUserId,
+            postDate: new Date().toISOString(),
+          };
+          //console.log(url);
+          this.petService
+            .addPet(pet)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
       }
     );
-  } */
+  }
 }

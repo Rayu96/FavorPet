@@ -14,7 +14,8 @@ export class AuthService {
   constructor(private auth: Auth) {}
 
   // current user
-  currentUserId = new EventEmitter(false);
+  usserLoggedIn = new EventEmitter(false);
+  currentUserUid = new EventEmitter();
 
   // Register new user user with email
   register({ email, password }: any) {

@@ -14,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   isLogin = false;
 
   ngOnInit(): void {
-    this.auth.currentUserId.subscribe((res) => {
+    this.auth.usserLoggedIn.subscribe((res) => {
       this.isLogin = res;
       console.log(this.isLogin);
     });
@@ -27,6 +27,6 @@ export class ToolbarComponent implements OnInit {
   signOut() {
     this.auth.logout();
     this.router.navigateByUrl('/');
-    this.auth.currentUserId.emit(false);
+    this.auth.usserLoggedIn.emit(false);
   }
 }

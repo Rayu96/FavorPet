@@ -1,4 +1,7 @@
-<app-toolbar></app-toolbar>
+<app-toolbar
+  (onKindEmitted)="getKindFilter($event)"
+  (onSortByEmitted)="getSortByFilter($event)"
+></app-toolbar>
 
 <!-- Spinner -->
 <div class="spinner" *ngIf="isLoading">

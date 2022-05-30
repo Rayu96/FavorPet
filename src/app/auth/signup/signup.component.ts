@@ -79,9 +79,11 @@ export class SignupComponent implements OnInit {
           onAuthStateChanged(this.myauth, (user) => {
             if (user) {
               const uid = user.uid;
-              const userAdded: User = { id: uid, name, lastname, email };
+              const userAdded: User = { uid: uid, name, lastname, email };
               this.userService.addUser(userAdded);
-              this.authService.currentUserId.emit(true);
+
+              this.authService.usserLoggedIn.emit(true);
+              this.authService.currentUserUid.emit(uid);
             }
           });
 

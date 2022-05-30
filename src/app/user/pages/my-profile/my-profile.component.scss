@@ -1,0 +1,59 @@
+.profile-container {
+  width: 680px;
+  min-height: 80vh;
+  margin: 16px auto;
+}
+
+.tab {
+  padding: 16px;
+  min-height: 500px;
+}
+
+.profile-card {
+  .profile-card-header {
+    display: flex;
+    justify-content: space-between;
+
+    /* Card header img */
+    .img {
+      width: 160px;
+      height: 160px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    /* Card header info */
+    .info {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 2.5em;
+      }
+    }
+  }
+
+  /* Profile card content */
+  .profile-card-content {
+    margin-top: 56px;
+    text-align: left;
+  }
+}
+
+.pets-list {
+  width: 100%;
+}
+
+.row-2 {
+  display: flex;
+  gap: 8px;
+}

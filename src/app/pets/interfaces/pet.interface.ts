@@ -7,4 +7,5 @@ export interface Pet {
   age: number;
   location: string;
   photoUrl: string;
+  postDate: Date;
 }

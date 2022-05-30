@@ -5,6 +5,7 @@ import { UserProfileComponent } from './user/pages/user-profile/user-profile.com
 import { ErrorComponent } from './shared/pages/error/error.component';
 import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { UnauthorizedComponent } from './shared/pages/unauthorized/unauthorized.component';
+import { MyProfileComponent } from './user/pages/my-profile/my-profile.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: UserProfileComponent,
+  },
+  {
+    path: 'profile',
+    component: MyProfileComponent,
   },
   {
     path: '403',

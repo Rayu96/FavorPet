@@ -7,7 +7,7 @@ import { PetsComponent } from './pages/pets/pets.component';
 import { MaterialModule } from '../material/material.module';
 import { PetDetailComponent } from './pages/pet-detail/pet-detail.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PetImgPipe } from './pipes/pet-img.pipe';
 import { PetKindPipe } from './pipes/pet-kind.pipe';
 import { AddPetComponent } from './pages/add-pet/add-pet.component';
@@ -27,6 +27,7 @@ import { AddPetComponent } from './pages/add-pet/add-pet.component';
     PetsRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class PetsModule {}

@@ -56,6 +56,7 @@
                     {{ kind | titlecase }}
                   </mat-option>
                 </mat-select>
+                <mat-error>Debes seleccionar un tipo</mat-error>
               </mat-form-field>
             </div>
 
@@ -64,7 +65,7 @@
               <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Edad</mat-label>
                 <input matInput type="number" formControlName="age" />
-                <mat-error>e</mat-error>
+                <mat-error>La edad es obligatoria</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -73,7 +74,7 @@
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Ubicación</mat-label>
             <input matInput type="text" formControlName="location" />
-            <mat-error>e</mat-error>
+            <mat-error>La ubicación os obligatoria</mat-error>
           </mat-form-field>
 
           <!-- Submit form -->

@@ -13,7 +13,12 @@
   <div class="pet-info">
     <div class="header">
       <h2>{{ pet.name }}</h2>
+
+      <span>Descripción</span>
       <p>{{ pet.description }}</p>
+
+      <span>Fecha de publicación</span>
+      <p>{{ pet.postDate | date: "medium" }}</p>
     </div>
 
     <div class="info">
