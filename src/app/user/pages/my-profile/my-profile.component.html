@@ -1,5 +1,5 @@
 <div class="profile-container">
-  <mat-tab-group>
+  <mat-tab-group #tabs>
     <mat-tab label="Mi Perfil">
       <!-- My Profile -->
       <div class="tab">
@@ -16,18 +16,30 @@
             <!-- Profile card info -->
             <div class="info">
               <h2>{{ myProfile.name }} {{ myProfile.lastname }}</h2>
+              <span>Mi información</span>
               <div>
-                <p>Ubicación: {{ myProfile.location }}</p>
-                <p>Email: {{ myProfile.email }}</p>
-                <p>Teléfono: {{ myProfile.phone }}</p>
+                <p>{{ myProfile.location }}</p>
+                <mat-icon>pin_drop</mat-icon>
+              </div>
+              <div>
+                <p>{{ myProfile.email }}</p>
+                <mat-icon>mail</mat-icon>
+              </div>
+              <div>
+                <p>{{ myProfile.phone }}</p>
+                <mat-icon>call</mat-icon>
               </div>
             </div>
           </div>
 
           <!-- Profile info -->
           <div class="profile-card-content">
+            <span>Sobre mí</span>
             <p>Descripción: {{ myProfile.aboutMe }}</p>
           </div>
+          <button mat-stroked-button (click)="mattabInfo()" class="editProfile">
+            Editar perfil
+          </button>
         </div>
       </div>
     </mat-tab>
@@ -36,27 +48,33 @@
       <!-- My Pets -->
       <div class="tab">
         <div class="pets-list" *ngIf="myPets">
-          <app-user-pet *ngFor="let pet of myPets" [pet]="pet"></app-user-pet>
+          <app-user-pet
+            *ngFor="let pet of myPets"
+            [pet]="pet"
+            (editPet)="getPetId($event)"
+          ></app-user-pet>
         </div>
       </div>
     </mat-tab>
 
-    <mat-tab label="Editar">
+    <mat-tab label="Editar" *ngIf="showEditPage">
       <!-- Edit Profile -->
       <div class="tab">
         <div class="card">
-          <form>
+          <form [formGroup]="updateProfileForm">
             <div class="row-2">
+              <h2>{{ myProfile.id | json }}</h2>
+
               <!-- Name -->
               <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <input matInput />
+                <input matInput formControlName="name" />
               </mat-form-field>
 
               <!-- Lastname -->
               <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Apellido</mat-label>
-                <input matInput />
+                <input matInput formControlName="lastname" />
               </mat-form-field>
             </div>
 
@@ -64,31 +82,71 @@
               <!-- Location -->
               <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Ubicación</mat-label>
-                <input matInput />
+                <input matInput formControlName="location" />
               </mat-form-field>
 
               <!-- Phone -->
               <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Teléfono</mat-label>
-                <input matInput />
+                <input matInput formControlName="phone" />
               </mat-form-field>
             </div>
 
             <!-- Email -->
             <mat-form-field class="w-full" appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput type="email" />
+              <input matInput type="email" formControlName="email" />
             </mat-form-field>
 
             <!-- Descripción -->
             <mat-form-field class="w-full" appearance="outline">
               <mat-label>Descripción</mat-label>
-              <textarea matInput></textarea>
+              <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
 
-            <!-- Submit -->
-            <button mat-flat-button color="primary">Aceptar</button>
+            <div class="buttons">
+              <!-- Cancel -->
+              <button
+                mat-stroked-button
+                color="primary"
+                (click)="cancelUpdate()"
+              >
+                Cancelar
+              </button>
+
+              <!-- Submit -->
+              <button mat-flat-button color="primary" (click)="updateProfile()">
+                Aceptar
+              </button>
+            </div>
           </form>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Editar Mascota" *ngIf="showEditPet">
+      <!-- Update Pet -->
+      <div class="tab">
+        <div class="card">
+          <div class="buttons">
+            <!-- Cancel -->
+            <button
+              mat-stroked-button
+              color="primary"
+              (click)="cancelPetUpdate()"
+            >
+              Cancelar
+            </button>
+
+            <!-- Submit -->
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="updatePetProfile()"
+            >
+              Aceptar
+            </button>
+          </div>
         </div>
       </div>
     </mat-tab>

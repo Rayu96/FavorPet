@@ -10,6 +10,14 @@
   <span class="spacer"></span>
   <span class="example-spacer"></span>
 
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="myProfile()"
+    *ngIf="isLogin"
+  >
+    Mi Perfil
+  </button>
   <button mat-flat-button color="primary" (click)="signOut()" *ngIf="isLogin">
     Cerrar sesión
   </button>

@@ -59,7 +59,6 @@ export class AddPetComponent implements OnInit {
         text: 'Debes rellenar todos los campos',
       });
     } else {
-      console.log('valido');
       Swal.fire({
         icon: 'question',
         text: '¿Estás seguro que deseas publicarlo?',

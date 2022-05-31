@@ -24,6 +24,10 @@ export class ToolbarComponent implements OnInit {
     this.router.navigateByUrl('/auth/login');
   }
 
+  myProfile() {
+    this.router.navigateByUrl('/profile');
+  }
+
   signOut() {
     this.auth.logout();
     this.router.navigateByUrl('/');

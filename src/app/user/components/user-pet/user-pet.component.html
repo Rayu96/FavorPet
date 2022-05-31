@@ -1,4 +1,4 @@
-<div class="card" (click)="navigate()">
+<div class="card">
   <div class="img">
     <img [src]="pet.photoUrl" alt="" />
   </div>
@@ -8,6 +8,18 @@
       <div>{{ pet.age }}</div>
       <div>{{ pet.kind }}</div>
       <div>{{ pet.location }}</div>
+
+      <button mat-stroked-button (click)="userPetEdit()" class="editPet">
+        Editar
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="navigate()"
+        class="editPet"
+      >
+        Ver
+      </button>
     </div>
   </div>
 </div>

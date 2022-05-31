@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pet } from 'src/app/pets/interfaces/pet.interface';
 
@@ -10,11 +10,17 @@ import { Pet } from 'src/app/pets/interfaces/pet.interface';
 export class UserPetComponent implements OnInit {
   @Input() pet!: Pet;
 
+  @Output() editPet: EventEmitter<string> = new EventEmitter();
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   navigate() {
     console.log(this.router.navigateByUrl(`/pets/${this.pet.id}`));
+  }
+
+  userPetEdit() {
+    this.editPet.emit(this.pet.id);
   }
 }
