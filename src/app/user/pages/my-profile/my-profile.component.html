@@ -63,8 +63,6 @@
         <div class="card">
           <form [formGroup]="updateProfileForm">
             <div class="row-2">
-              <h2>{{ myProfile.id | json }}</h2>
-
               <!-- Name -->
               <mat-form-field class="w-full" appearance="outline">
                 <mat-label>Nombre</mat-label>
@@ -101,7 +99,7 @@
             <!-- Descripción -->
             <mat-form-field class="w-full" appearance="outline">
               <mat-label>Descripción</mat-label>
-              <textarea matInput formControlName="description"></textarea>
+              <textarea matInput formControlName="aboutMe"></textarea>
             </mat-form-field>
 
             <div class="buttons">

@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { MatTabGroup } from '@angular/material/tabs';
 import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
@@ -29,7 +30,8 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private usersService: UserService,
     private petsService: PetsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +61,7 @@ export class MyProfileComponent implements OnInit {
               location: new FormControl(this.myProfile.location),
               phone: new FormControl(this.myProfile.phone),
               email: new FormControl(this.myProfile.email),
-              description: new FormControl(this.myProfile.aboutMe),
+              aboutMe: new FormControl(this.myProfile.aboutMe),
             });
           });
 
@@ -97,8 +99,21 @@ export class MyProfileComponent implements OnInit {
         }).then((res) => {
           if (res.isConfirmed) {
             //Upload pet
-            console.log(this.updateProfileForm.value);
-            //this.cancelUpdate();
+            const userUpdated = {
+              ...this.updateProfileForm.value,
+              uid: this.myProfile.uid,
+            };
+            console.log(userUpdated, this.myProfile.id);
+
+            this.usersService
+              .updateUser(userUpdated, this.myProfile.id!)
+              .then(() => {
+                this.cancelUpdate();
+                this.router.navigateByUrl('/profile');
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         });
       }
