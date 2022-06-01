@@ -1,3 +1,11 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-403 {
   width: 460px;
   margin: 32px auto;

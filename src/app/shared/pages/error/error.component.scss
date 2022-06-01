@@ -1,8 +1,37 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .error-container {
-  width: 500px;
+  width: 560px;
   height: 550px;
   margin: 32px auto;
   position: relative;
+
+  .info {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px 32px;
+    z-index: 200;
+
+    a {
+      text-decoration: none;
+      color: #aaa;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #0582c1;
+    }
+  }
 
   .error-bg {
     position: absolute;
@@ -16,7 +45,7 @@
     position: absolute;
     z-index: 50;
     top: 0%;
-    left: 140px;
+    left: 150px;
     width: 240px;
     animation: error-cartel-anim 0.8s ease forwards,
       anim-404 1s ease alternate-reverse infinite;
