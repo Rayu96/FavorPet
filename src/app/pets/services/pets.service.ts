@@ -8,8 +8,9 @@ import {
   doc,
   docData,
   Firestore,
+  setDoc,
 } from '@angular/fire/firestore';
-import { collection } from '@firebase/firestore';
+import { collection, deleteDoc } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -18,17 +19,6 @@ export class PetsService {
   baseUrl: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient, private firestore: Firestore) {}
-
-  // Json-Server Tests
-  // Get all pets
-  /*   getPets(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(`${this.baseUrl}/pets`);
-  }
-
-  // Get single pet by id
-  getPetById(id: string): Observable<Pet> {
-    return this.http.get<Pet>(`${this.baseUrl}/pets/${id}`);
-  } */
 
   //Firebase
   addPet(pet: Pet) {
@@ -44,5 +34,15 @@ export class PetsService {
   getPetById(id: string): Observable<Pet> {
     const petsRef = doc(this.firestore, `pets/${id}`);
     return docData(petsRef, { idField: 'id' }) as Observable<Pet>;
+  }
+
+  updatePet(pet: Pet, id: string) {
+    const petsRef = doc(this.firestore, `pets/${id}`);
+    return setDoc(petsRef, pet);
+  }
+
+  deletePet(id: string) {
+    const petsRef = doc(this.firestore, `pets/${id}`);
+    return deleteDoc(petsRef);
   }
 }

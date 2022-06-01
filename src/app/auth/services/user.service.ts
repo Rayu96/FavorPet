@@ -9,7 +9,6 @@ import {
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { User } from '../interfaces/user';
 
 @Injectable({

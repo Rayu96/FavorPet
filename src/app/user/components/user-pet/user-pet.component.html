@@ -5,20 +5,33 @@
   <div class="info">
     <h2>{{ pet.name }}</h2>
     <div class="items">
-      <div>{{ pet.age }}</div>
-      <div>{{ pet.kind }}</div>
-      <div>{{ pet.location }}</div>
+      <div>
+        <mat-icon>pin_drop</mat-icon>
+        <p>{{ pet.location }}</p>
+      </div>
+
+      <div>
+        <mat-icon>wb_sunny</mat-icon>
+        <p>{{ pet.age }} años</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button mat-stroked-button color="warn" (click)="deletePet()">
+        <mat-icon>delete</mat-icon>
+      </button>
 
       <button mat-stroked-button (click)="userPetEdit()" class="editPet">
-        Editar
+        <mat-icon>edit</mat-icon>
       </button>
+
       <button
         mat-stroked-button
         color="primary"
         (click)="navigate()"
         class="editPet"
       >
-        Ver
+        <mat-icon>visibility</mat-icon>
       </button>
     </div>
   </div>

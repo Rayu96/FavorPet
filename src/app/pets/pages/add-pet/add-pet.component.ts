@@ -136,4 +136,8 @@ export class AddPetComponent implements OnInit {
       }
     );
   }
+
+  cancel() {
+    this.router.navigateByUrl('pets');
+  }
 }

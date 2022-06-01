@@ -12,6 +12,8 @@ export class UserPetComponent implements OnInit {
 
   @Output() editPet: EventEmitter<string> = new EventEmitter();
 
+  @Output() onDeletePet: EventEmitter<string> = new EventEmitter();
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -22,5 +24,9 @@ export class UserPetComponent implements OnInit {
 
   userPetEdit() {
     this.editPet.emit(this.pet.id);
+  }
+
+  deletePet() {
+    this.onDeletePet.emit(this.pet.id);
   }
 }

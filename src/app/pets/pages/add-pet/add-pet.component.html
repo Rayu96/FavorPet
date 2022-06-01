@@ -1,36 +1,26 @@
 <div class="add-container">
   <div class="card">
-    <h2>¡Agrega tu mascota!</h2>
-    <div class="container">
-      <!-- Image -->
-      <div class="img-container">
-        <div class="img-preview">
-          <!-- Icon if there is no image loaded -->
-          <div class="img-preview-icon" *ngIf="!isImgSelected">
-            <img src="../../../../assets/icons/add-photo.png" alt="" />
-          </div>
+    <h2>¡Agregar una mascota!</h2>
 
-          <!-- Image loaded  -->
-          <img [src]="imageUrl" alt="" />
-        </div>
-        <div class="buttons">
-          <div class="upload">
-            <input
-              type="file"
-              id="file"
-              accept="image/*"
-              (change)="showPreview($event)"
-            />
-            <label for="file"
-              ><mat-icon>file_upload</mat-icon>Escoge una fotografía
-            </label>
+    <div class="update-profile">
+      <!-- User Image -->
+      <div class="user-image">
+        <div class="user-image-pic">
+          <div class="img">
+            <img [src]="imageUrl" alt="" />
           </div>
+          <input
+            type="file"
+            id="file"
+            accept="image/*"
+            (change)="showPreview($event)"
+          />
+          <label for="file"><mat-icon>add_a_photo</mat-icon> </label>
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="add">
-        <!-- Submit form -->
+      <!-- User form -->
+      <div class="user-form">
         <form [formGroup]="addPetForm" (ngSubmit)="submitForm()">
           <!-- email -->
           <mat-form-field appearance="outline" class="w-full">
@@ -78,9 +68,27 @@
           </mat-form-field>
 
           <!-- Submit form -->
-          <button mat-flat-button color="primary" class="my-3" type="submit">
-            Aceptar
-          </button>
+          <div class="buttons">
+            <!-- Cancel -->
+            <button
+              mat-stroked-button
+              color="primary"
+              type="button"
+              (click)="cancel()"
+            >
+              Cancelar
+            </button>
+
+            <!-- Submit -->
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="submitForm()"
+              type="submit"
+            >
+              Aceptar
+            </button>
+          </div>
         </form>
       </div>
     </div>

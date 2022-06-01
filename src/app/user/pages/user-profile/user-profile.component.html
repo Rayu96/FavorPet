@@ -1,40 +1,9 @@
 <div class="profile-container">
-  <div class="card profile-card">
-    <div class="profile-card-header">
-      <!-- Profile card img -->
-      <div class="img">
-        <img
-          src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80"
-          alt=""
-        />
-      </div>
+  <!-- User profile card -->
+  <app-user-profile-card [user]="user"></app-user-profile-card>
 
-      <!-- Profile card info -->
-      <div class="info">
-        <h2>Owner name</h2>
-        <div>
-          <p>Location</p>
-          <p>email</p>
-          <p>Phone</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Profile info -->
-    <div class="profile-card-content">
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio
-        praesentium, nulla magni maiores quidem ullam quis assumenda tempore
-        impedit, ipsum error accusantium eos doloribus quibusdam quasi itaque
-        quo odit numquam facere. Pariatur, delectus magni. Tempore iure
-        obcaecati corporis suscipit est.
-      </p>
-    </div>
-  </div>
-
-  <!-- Pets List -->
-  <div class="pets-list">
-    <app-user-pet></app-user-pet>
-    <app-user-pet></app-user-pet>
+  <!-- User pets -->
+  <div class="users-pets">
+    <app-user-pet *ngFor="let pet of pets" [pet]="pet"></app-user-pet>
   </div>
 </div>

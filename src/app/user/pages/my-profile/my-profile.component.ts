@@ -11,6 +11,10 @@ import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateProfileComponent } from '../../components/update-profile/update-profile.component';
+import { UpdatePetComponent } from '../../components/update-pet/update-pet.component';
+
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -30,23 +34,19 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private usersService: UserService,
     private petsService: PetsService,
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    // Get users
-    this.usersService.getUsers().subscribe((res) => {
-      console.log(res);
-    });
-
     // Verify if a user is logged in
     onAuthStateChanged(this.myauth, (user) => {
       const id = user?.uid;
 
       if (id) {
-        // Emit if user is login
-        //this.authService.usserLoggedIn.emit(true);
+        // Emit current state
+        this.authService.usserLoggedIn.emit(true);
 
         // Get user info
         this.usersService
@@ -54,15 +54,6 @@ export class MyProfileComponent implements OnInit {
           .pipe(map((res) => res.filter((pet) => pet.uid === id)))
           .subscribe((res) => {
             this.myProfile = res[0];
-
-            this.updateProfileForm = new FormGroup({
-              name: new FormControl(this.myProfile.name),
-              lastname: new FormControl(this.myProfile.lastname),
-              location: new FormControl(this.myProfile.location),
-              phone: new FormControl(this.myProfile.phone),
-              email: new FormControl(this.myProfile.email),
-              aboutMe: new FormControl(this.myProfile.aboutMe),
-            });
           });
 
         this.petsService
@@ -75,9 +66,68 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  mattabInfo() {
-    this.showEditPage = true;
-    this.tabGroup.selectedIndex = 2;
+  // Go to update pet page
+  mattabInfo(edit: boolean) {
+    const dialog = this.matDialog.open(UpdateProfileComponent, {
+      data: this.myProfile,
+    });
+
+    dialog.afterClosed().subscribe((res) => {
+      if (res) {
+        Swal.fire({
+          title: '¡Tu perfil ha sido actualizado!',
+          icon: 'success',
+          confirmButtonText: 'OK!',
+          confirmButtonColor: '#F2B84B',
+        });
+      }
+    });
+  }
+
+  getPetId(id: string) {
+    const myPet = this.myPets.filter((pet) => pet.id === id);
+    const dialog = this.matDialog.open(UpdatePetComponent, {
+      data: myPet[0],
+    });
+
+    dialog.afterClosed().subscribe((res) => {
+      if (res) {
+        Swal.fire({
+          title: '¡La información de tu mascota ha sido actualizada!',
+          icon: 'success',
+          confirmButtonText: 'OK!',
+          confirmButtonColor: '#F2B84B',
+        });
+      }
+    });
+  }
+
+  deletePet(id: string) {
+    Swal.fire({
+      icon: 'warning',
+      text: '¿Estás seguro que deseas eliminar esta mascota?',
+      showCancelButton: true,
+      confirmButtonText: 'Si, quiero eliminarla!',
+      cancelButtonText: 'No',
+      reverseButtons: true,
+      confirmButtonColor: '#F3594B',
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.petsService
+          .deletePet(id)
+          .then(() => {
+            Swal.fire({
+              title: '¡Tu mascota ha sido eliminada!',
+              icon: 'success',
+              confirmButtonText: 'OK!',
+              confirmButtonColor: '#F2B84B',
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
   }
 
   updateProfile() {
@@ -155,11 +205,5 @@ export class MyProfileComponent implements OnInit {
   cancelPetUpdate() {
     this.showEditPet = false;
     this.tabGroup.selectedIndex = 1;
-  }
-
-  getPetId(id: string) {
-    this.showEditPet = true;
-    this.tabGroup.selectedIndex = 3;
-    console.log('Estamos en el : ', id);
   }
 }
