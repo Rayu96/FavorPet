@@ -12,12 +12,37 @@ img {
   .login-form {
     animation: form-anim 0.8s ease;
   }
+
+  .login-icon {
+    display: none;
+  }
 }
 
 a {
   margin-bottom: 24px;
 }
 
+// Media queries
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .login-img {
+      display: none;
+    }
+
+    .login-icon {
+      width: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+// Animation
 @keyframes form-anim {
   0% {
     opacity: 0;

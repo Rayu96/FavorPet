@@ -1,3 +1,5 @@
+import { Comment } from './comment.interface';
+
 export interface Pet {
   id?: string;
   ownerId: string;

@@ -65,6 +65,39 @@
   }
 }
 
+// Media queries
+@media (max-width: 768px) {
+  .error-container {
+    width: 80%;
+    height: 400px;
+
+    .info {
+      width: 100%;
+    }
+
+    .error-cartel {
+      right: -40%;
+      width: 200px;
+    }
+
+    .error-person {
+      width: 90px;
+      left: 35px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .error-container {
+    position: relative;
+
+    .error-cartel {
+      width: 180px;
+    }
+  }
+}
+
+// Animations
 @keyframes anim-404 {
   0% {
     transform: translateY(8px);

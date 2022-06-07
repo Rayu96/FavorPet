@@ -3,9 +3,10 @@
   padding: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 16px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 116px 1fr;
 }
 
 .card:hover {
@@ -50,12 +51,20 @@
       gap: 16px;
     }
   }
+}
 
+.buttons {
+  position: absolute;
+  display: flex;
+  gap: 16px;
+  bottom: 8px;
+  right: 8px;
+}
+
+// Media queries
+@media (max-width: 768px) {
   .buttons {
-    position: absolute;
-    display: flex;
-    gap: 16px;
-    bottom: 0;
-    right: 0;
+    flex-direction: column;
+    gap: 4px;
   }
 }

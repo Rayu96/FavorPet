@@ -12,12 +12,37 @@ img {
   .signup-form {
     animation: form-anim 0.8s ease;
   }
+
+  .signup-icon {
+    display: none;
+  }
 }
 
 a {
   margin-bottom: 16px;
 }
 
+// Media queries
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .signup-img {
+      display: none;
+    }
+
+    .signup-icon {
+      width: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+// Animations
 @keyframes form-anim {
   0% {
     opacity: 0;

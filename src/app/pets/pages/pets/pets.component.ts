@@ -27,8 +27,10 @@ export class PetsComponent implements OnInit {
     // Get all pets
     this.getPets();
 
+    this.authService.sendUserId();
+
     // Check if its authenticated
-    const myauth = getAuth();
+    /* const myauth = getAuth();
     onAuthStateChanged(myauth, (user) => {
       if (user) {
         //console.log(user);
@@ -37,7 +39,7 @@ export class PetsComponent implements OnInit {
       } else {
         console.log('no logeado');
       }
-    });
+    }); */
   }
 
   // Filter pets by kind

@@ -7,6 +7,8 @@
     background-color: orange;
     border-radius: 8px;
     position: relative;
+    background-image: url("../../../../assets/banner-profile.png");
+    background-size: cover;
 
     .profile-pic {
       width: 180px;
@@ -37,7 +39,7 @@
 
     .btn-edit {
       position: absolute;
-      bottom: 8px;
+      top: 8px;
       right: 8px;
     }
   }

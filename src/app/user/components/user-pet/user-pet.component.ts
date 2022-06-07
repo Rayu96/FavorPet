@@ -10,9 +10,13 @@ import { Pet } from 'src/app/pets/interfaces/pet.interface';
 export class UserPetComponent implements OnInit {
   @Input() pet!: Pet;
 
+  @Input() onMyPet = false;
+
   @Output() editPet: EventEmitter<string> = new EventEmitter();
 
   @Output() onDeletePet: EventEmitter<string> = new EventEmitter();
+
+  @Output() onShowPet: EventEmitter<string> = new EventEmitter();
 
   constructor(private router: Router) {}
 
@@ -28,5 +32,9 @@ export class UserPetComponent implements OnInit {
 
   deletePet() {
     this.onDeletePet.emit(this.pet.id);
+  }
+
+  showPetPreview() {
+    this.onShowPet.emit(this.pet.id);
   }
 }

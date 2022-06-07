@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateProfileComponent } from '../../components/update-profile/update-profile.component';
 import { UpdatePetComponent } from '../../components/update-pet/update-pet.component';
+import { PetPreviewComponent } from '../../components/pet-preview/pet-preview.component';
 
 @Component({
   selector: 'app-my-profile',
@@ -45,8 +46,7 @@ export class MyProfileComponent implements OnInit {
       const id = user?.uid;
 
       if (id) {
-        // Emit current state
-        this.authService.usserLoggedIn.emit(true);
+        this.authService.sendUserId();
 
         // Get user info
         this.usersService
@@ -81,6 +81,13 @@ export class MyProfileComponent implements OnInit {
           confirmButtonColor: '#F2B84B',
         });
       }
+    });
+  }
+
+  // Show pet preview
+  showPetPreview(id: string) {
+    const dialog = this.matDialog.open(PetPreviewComponent, {
+      data: id,
     });
   }
 

@@ -4,6 +4,7 @@ import { AddPetComponent } from './pages/add-pet/add-pet.component';
 import { PetDetailComponent } from './pages/pet-detail/pet-detail.component';
 import { PetsComponent } from './pages/pets/pets.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { PetCommentsComponent } from './pages/pet-comments/pet-comments.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: ':id',
         component: PetDetailComponent,
+      },
+      {
+        path: ':id/comments',
+        component: PetCommentsComponent,
       },
       {
         path: '**',

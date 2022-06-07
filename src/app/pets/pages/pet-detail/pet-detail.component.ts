@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Comment } from '../../interfaces/comment.interface';
 import { Pet } from '../../interfaces/pet.interface';
+import { CommentsService } from '../../services/comments.service';
 import { PetsService } from '../../services/pets.service';
 
 @Component({
@@ -11,6 +14,7 @@ import { PetsService } from '../../services/pets.service';
 export class PetDetailComponent implements OnInit {
   pet!: Pet;
   isLoading = true;
+  petId = '';
 
   ageMap = {
     '=1': 'año',
@@ -19,15 +23,24 @@ export class PetDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private petsService: PetsService
+    private petsService: PetsService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authService.sendUserId();
+
     this.activatedRoute.params.subscribe(({ id }) => {
+      this.petId = id;
       this.petsService.getPetById(id).subscribe((pet) => {
         this.pet = pet;
         this.isLoading = false;
       });
     });
+  }
+
+  addComment() {
+    this.router.navigateByUrl(`pets/${this.petId}/comments`);
   }
 }

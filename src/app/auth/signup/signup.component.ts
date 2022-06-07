@@ -82,8 +82,8 @@ export class SignupComponent implements OnInit {
               const userAdded: User = { uid: uid, name, lastname, email };
               this.userService.addUser(userAdded);
 
-              this.authService.usserLoggedIn.emit(true);
-              this.authService.currentUserUid.emit(uid);
+              //TODO: emitter
+              //this.authService.currentUserUid.emit(uid);
             }
           });
 

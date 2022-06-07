@@ -8,9 +8,12 @@ import { MaterialModule } from '../material/material.module';
 import { PetDetailComponent } from './pages/pet-detail/pet-detail.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PetImgPipe } from './pipes/pet-img.pipe';
-import { PetKindPipe } from './pipes/pet-kind.pipe';
+
 import { AddPetComponent } from './pages/add-pet/add-pet.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PetCommentsComponent } from './pages/pet-comments/pet-comments.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,9 @@ import { AddPetComponent } from './pages/add-pet/add-pet.component';
     PetsComponent,
     PetDetailComponent,
     ToolbarComponent,
-    PetImgPipe,
-    PetKindPipe,
     AddPetComponent,
+    PetCommentsComponent,
+    CommentComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +31,8 @@ import { AddPetComponent } from './pages/add-pet/add-pet.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    SharedModule,
   ],
 })
 export class PetsModule {}

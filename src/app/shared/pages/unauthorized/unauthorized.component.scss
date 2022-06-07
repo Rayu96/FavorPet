@@ -49,6 +49,24 @@
   }
 }
 
+// Media queries
+@media (max-width: 768px) {
+  .container-403 {
+    width: 60%;
+    margin-bottom: 8px;
+
+    .icons {
+      top: 30px;
+      width: 50%;
+    }
+  }
+
+  .info {
+    width: 70%;
+  }
+}
+
+// Animations
 @keyframes anim-info {
   100% {
     transform: translateY(0px);

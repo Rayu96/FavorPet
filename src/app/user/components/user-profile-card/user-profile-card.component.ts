@@ -9,6 +9,8 @@ import { User } from 'src/app/auth/interfaces/user';
 export class UserProfileCardComponent implements OnInit {
   @Input() user!: User;
 
+  @Input() onMyProfile = false;
+
   @Output() onEditProfile: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}

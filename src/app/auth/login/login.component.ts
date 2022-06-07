@@ -59,6 +59,10 @@ export class LoginComponent implements OnInit {
         .then((res) => {
           this.router.navigateByUrl('/pets');
           //this.authService.userId.emit(true);
+          localStorage.setItem('userId', res.user.uid);
+
+          // TODO: eventEmitter
+          this.authService.sendUserId();
         })
         .catch((err) => {
           console.log(err);

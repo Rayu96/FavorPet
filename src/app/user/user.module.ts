@@ -8,6 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { UpdatePetComponent } from './components/update-pet/update-pet.component';
 import { UserProfileCardComponent } from './components/user-profile-card/user-profile-card.component';
+import { PetPreviewComponent } from './components/pet-preview/pet-preview.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,14 @@ import { UserProfileCardComponent } from './components/user-profile-card/user-pr
     UpdateProfileComponent,
     UpdatePetComponent,
     UserProfileCardComponent,
+    PetPreviewComponent,
   ],
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule,
+    SharedModule,
+  ],
 })
 export class UserModule {}

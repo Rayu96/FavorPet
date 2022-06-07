@@ -68,3 +68,41 @@ label,
 label:hover {
   background-color: rgb(23, 127, 232);
 }
+
+// Media queries
+@media (max-width: 1040px) {
+  .update-profile {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    .user-image {
+      .user-image-pic {
+        position: relative;
+        width: 150px;
+        height: 150px;
+
+        .img {
+          width: 150px;
+          height: 150px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  label,
+  .btn {
+    right: 4px;
+    bottom: -16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .update-profile {
+    width: 90%;
+  }
+}

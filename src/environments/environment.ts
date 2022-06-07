@@ -4,15 +4,16 @@
 
 export const environment = {
   firebase: {
-    projectId: 'helppet-fdeff',
-    appId: '1:553042725238:web:831c0c442ba13cf22d1257',
-    storageBucket: 'helppet-fdeff.appspot.com',
+    projectId: 'tfg-daw',
+    appId: '1:1062131257206:web:c8c9aa4489fd1b8bb33457',
+    databaseURL: 'https://tfg-daw-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'tfg-daw.appspot.com',
     locationId: 'europe-west',
-    apiKey: 'AIzaSyDNB-XAgACgcP2A__wUO7vvZ3IPnfAOQfM',
-    authDomain: 'helppet-fdeff.firebaseapp.com',
-    messagingSenderId: '553042725238',
+    apiKey: 'AIzaSyBvNUggP1ELHrsva4UDy-dBoag8sr00AJQ',
+    authDomain: 'tfg-daw.firebaseapp.com',
+    messagingSenderId: '1062131257206',
   },
-  production: false
+  production: false,
 };
 
 /*

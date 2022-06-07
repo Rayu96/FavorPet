@@ -46,7 +46,8 @@ export class AddPetComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserId = this.auth.currentUser?.uid;
-    this.authService.usserLoggedIn.emit(true);
+
+    this.authService.sendUserId();
   }
 
   submitForm() {

@@ -82,3 +82,23 @@ label,
 label:hover {
   background-color: rgb(23, 127, 232);
 }
+
+//Media queries
+@media (max-width: 992px) {
+  .add-container {
+    padding: 48px;
+
+    .add-card {
+      width: 80%;
+    }
+  }
+  .update-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .user-image {
+      width: 100%;
+    }
+  }
+}

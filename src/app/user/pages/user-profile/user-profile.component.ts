@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/auth/interfaces/user';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { UserService } from 'src/app/auth/services/user.service';
 import { Pet } from 'src/app/pets/interfaces/pet.interface';
 import { PetsService } from 'src/app/pets/services/pets.service';
@@ -19,10 +20,13 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private usersService: UserService,
-    private petsService: PetsService
+    private petsService: PetsService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authService.sendUserId();
+
     this.activatedRoute.params.subscribe(({ id }) => {
       this.userId = id;
     });

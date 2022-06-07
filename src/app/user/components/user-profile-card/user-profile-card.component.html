@@ -8,7 +8,12 @@
     </div>
 
     <!-- Edit button -->
-    <button mat-raised-button class="btn-edit" (click)="mattabInfo()">
+    <button
+      mat-raised-button
+      class="btn-edit"
+      (click)="mattabInfo()"
+      *ngIf="onMyProfile"
+    >
       <mat-icon>edit</mat-icon>
     </button>
   </div>

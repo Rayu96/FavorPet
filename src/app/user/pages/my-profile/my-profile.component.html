@@ -7,6 +7,7 @@
           <app-user-profile-card
             [user]="myProfile"
             (onEditProfile)="mattabInfo($event)"
+            [onMyProfile]="true"
           ></app-user-profile-card>
         </div>
       </div>
@@ -21,6 +22,8 @@
             [pet]="pet"
             (editPet)="getPetId($event)"
             (onDeletePet)="deletePet($event)"
+            (onShowPet)="showPetPreview($event)"
+            [onMyPet]="true"
           ></app-user-pet>
         </div>
       </div>

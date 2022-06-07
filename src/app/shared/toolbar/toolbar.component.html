@@ -3,6 +3,7 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
+    (click)="openSidenav()"
   >
     <mat-icon>menu</mat-icon>
   </button>
@@ -10,52 +11,37 @@
   <span class="spacer"></span>
   <span class="example-spacer"></span>
 
-  <button
-    mat-stroked-button
-    color="primary"
-    (click)="myProfile()"
-    *ngIf="isLogin"
-  >
-    Mi Perfil
-  </button>
-  <button mat-flat-button color="primary" (click)="signOut()" *ngIf="isLogin">
-    Cerrar sesión
-  </button>
+  <div class="buttons-session-active" *ngIf="isLogin">
+    <button mat-button color="primary" (click)="goPets()" class="home-btn">
+      Inicio
+    </button>
 
-  <button
-    mat-stroked-button
-    color="primary"
-    routerLink="/auth/login"
-    *ngIf="!isLogin"
-  >
-    Iniciar Sesión
-  </button>
+    <button
+      mat-button
+      color="primary"
+      (click)="myProfile()"
+      class="profile-btn"
+    >
+      Mi Perfil
+    </button>
 
-  <button
-    mat-flat-button
-    color="primary"
-    routerLink="/auth/signup"
-    *ngIf="!isLogin"
-  >
-    Crear una cuenta
-  </button>
+    <button mat-flat-button color="primary" (click)="signOut()">
+      Cerrar sesión
+    </button>
+  </div>
+
+  <div class="buttons-session-inactive" *ngIf="!isLogin">
+    <button mat-stroked-button color="primary" routerLink="/auth/login">
+      Iniciar Sesión
+    </button>
+
+    <button
+      mat-flat-button
+      color="primary"
+      routerLink="/auth/signup"
+      class="signup"
+    >
+      Crear una cuenta
+    </button>
+  </div>
 </mat-toolbar>
-
-<!-- <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span routerLink="/">My App</span>
-  <span class="example-spacer"></span>
-  <button class="btn btn-primary-outline" routerLink="/auth/login">
-    Iniciar Sesión
-  </button>
-  <button class="btn btn-primary" routerLink="/auth/signup">
-    Crear una cuenta
-  </button>
-</mat-toolbar>
- -->
