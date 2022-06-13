@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { ValidatorService } from '../services/validator.service';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { User } from '../interfaces/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -82,8 +83,8 @@ export class SignupComponent implements OnInit {
               const userAdded: User = { uid: uid, name, lastname, email };
               this.userService.addUser(userAdded);
 
-              //TODO: emitter
-              //this.authService.currentUserUid.emit(uid);
+              localStorage.setItem('userId', user.uid);
+              this.authService.sendUserId();
             }
           });
 
@@ -91,7 +92,14 @@ export class SignupComponent implements OnInit {
           this.router.navigateByUrl('/pets');
         })
         .catch((err) => {
-          console.log(err);
+          switch (err.code) {
+            case 'auth/email-already-in-use':
+              Swal.fire({
+                icon: 'error',
+                text: 'Ya existe un usuario con el email ingresado',
+              });
+              break;
+          }
         });
     } else {
       console.log('Formulario inválido');

@@ -23,7 +23,7 @@
 }
 
 .info {
-  h1,
+  span,
   p {
     animation: main-info 1.5s ease;
   }
@@ -47,14 +47,28 @@
 //Media queries
 @media (max-width: 784px) {
   .container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+
+    .info {
+      text-align: center;
+    }
 
     div {
       align-items: center;
     }
 
     img {
-      width: 55%;
+      width: 50%;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    img {
+      width: 80%;
     }
   }
 }

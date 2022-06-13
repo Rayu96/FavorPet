@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 import { ValidatorService } from '../services/validator.service';
 
@@ -58,14 +59,26 @@ export class LoginComponent implements OnInit {
         .login({ email, password })
         .then((res) => {
           this.router.navigateByUrl('/pets');
-          //this.authService.userId.emit(true);
-          localStorage.setItem('userId', res.user.uid);
 
-          // TODO: eventEmitter
+          localStorage.setItem('userId', res.user.uid);
           this.authService.sendUserId();
         })
         .catch((err) => {
-          console.log(err);
+          switch (err.code) {
+            case 'auth/wrong-password':
+              Swal.fire({
+                icon: 'error',
+                text: 'La contraseña es incorrecta',
+              });
+              break;
+
+            case 'auth/user-not-found':
+              Swal.fire({
+                icon: 'error',
+                text: 'No se ha encontrado ningún usuario con el email ingresado',
+              });
+              break;
+          }
         });
     } else {
       console.log('Formulario inválido');

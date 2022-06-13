@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { AuthService } from './auth/services/auth.service';
 
 @Component({
@@ -12,9 +13,17 @@ export class AppComponent implements OnInit {
   isLogin = false;
 
   ngOnInit(): void {
-    this.auth.getUserId().subscribe((res) => {
-      this.isLogin = res == null ? false : true;
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
     });
+    /*     this.auth.getUserId().subscribe((res) => {
+      this.isLogin = res == null ? false : true;
+    }); */
   }
 
   title = 'petLink';

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import Swal from 'sweetalert2';
@@ -17,13 +17,22 @@ export class ToolbarComponent implements OnInit {
   @Output() onOpenSidenav: EventEmitter<void> = new EventEmitter();
 
   ngOnInit(): void {
-    this.auth.getUserId().subscribe((res) => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
+    });
+
+    /*     this.auth.getUserId().subscribe((res) => {
       if (res == null) {
         this.isLogin = false;
       } else {
         this.isLogin = true;
       }
-    });
+    }); */
   }
 
   goPets() {
